@@ -8,6 +8,11 @@ class CwButtonFunc {
         context, MaterialPageRoute(builder: (context) => MainAuth()));
   }
 
+  static continueWithGoogle(BuildContext context) async {
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MainAuth()));
+  }
+
   static continueWithFacebook(BuildContext context) async {
     await Navigator.push(
         context, MaterialPageRoute(builder: (context) => MainAuth()));

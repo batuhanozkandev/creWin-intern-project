@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class LandingButton extends StatefulWidget {
   final String text;
-  final Icon? icon;
+  final Widget? icon;
   final Color buttonColor;
   final VoidCallback onPress;
   const LandingButton(

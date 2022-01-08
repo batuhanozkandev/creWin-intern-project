@@ -4,6 +4,7 @@ import 'package:crewin_intern_project/viewmodel/button/buttonFunction.dart';
 import 'package:crewin_intern_project/widget/cwLandingButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -29,8 +30,8 @@ class _LandingPageState extends State<LandingPage> {
             h: 0.1,
           ),
           LandingButton(
-            buttonColor: Colors.red,
-            onPress: ()=>CwButtonFunc.continueWithEmail(context),
+            buttonColor: Colors.green,
+            onPress: () => CwButtonFunc.continueWithEmail(context),
             text: 'Continue with email',
             icon: Icon(
               Icons.email,
@@ -41,8 +42,20 @@ class _LandingPageState extends State<LandingPage> {
             h: 0.03,
           ),
           LandingButton(
+            buttonColor: Colors.red,
+            onPress: () => CwButtonFunc.continueWithGoogle(context),
+            text: 'Continue with Google',
+            icon: FaIcon(
+              FontAwesomeIcons.google,
+              color: Colors.white,
+            ),
+          ),
+          CwSizedBox(
+            h: 0.03,
+          ),
+          LandingButton(
             buttonColor: Colors.blue,
-            onPress: ()=>CwButtonFunc.continueWithFacebook(context),
+            onPress: () => CwButtonFunc.continueWithFacebook(context),
             text: 'Continue with Facebook',
             icon: Icon(
               Icons.facebook,
@@ -52,14 +65,13 @@ class _LandingPageState extends State<LandingPage> {
           CwSizedBox(
             h: 0.03,
           ),
-          LandingButton(
-            buttonColor: Colors.blueGrey,
-            onPress: ()=>CwButtonFunc.continueWithAnonim(context),
-            text: 'Continue Anonim',
-          ),
-          CwSizedBox(
-            h: 0.05,
-          ),
+          GestureDetector(
+            onTap: ()=>CwButtonFunc.continueWithAnonim(context),
+            child: Text(
+              "without signing",
+              style: TextStyle(color: Colors.grey),
+            ),
+          )
         ],
       )),
     );
