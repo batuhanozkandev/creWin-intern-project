@@ -1,5 +1,6 @@
 import 'package:crewin_intern_project/core/constants/color/landingPageColors.dart';
 import 'package:crewin_intern_project/model/widget/logo.dart';
+import 'package:crewin_intern_project/viewmodel/button/buttonFunction.dart';
 import 'package:crewin_intern_project/widget/cwLandingButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           LandingButton(
             buttonColor: Colors.red,
-            onPress: () {},
+            onPress: ()=>CwButtonFunc.continueWithEmail(context),
             text: 'Continue with email',
             icon: Icon(
               Icons.email,
@@ -41,7 +42,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           LandingButton(
             buttonColor: Colors.blue,
-            onPress: () {},
+            onPress: ()=>CwButtonFunc.continueWithFacebook(context),
             text: 'Continue with Facebook',
             icon: Icon(
               Icons.facebook,
@@ -53,7 +54,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           LandingButton(
             buttonColor: Colors.blueGrey,
-            onPress: () {},
+            onPress: ()=>CwButtonFunc.continueWithAnonim(context),
             text: 'Continue Anonim',
           ),
           CwSizedBox(
