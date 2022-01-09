@@ -4,11 +4,17 @@ import 'package:crewin_intern_project/widget/cwInputBox.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
 import 'package:flutter/material.dart';
 
+PageController _pageController = PageController();
+
 bool _isSelectedSignIn = true;
 
 String userEmail = "";
 String userPassword = "";
 String userPasswordRetry = "";
+
+String signUpuserEmail = "";
+String signUpuserPassword = "";
+String signUpuserPasswordRetry = "";
 
 class MainAuth extends StatefulWidget {
   const MainAuth({Key? key}) : super(key: key);
@@ -37,47 +43,15 @@ class _MainAuthState extends State<MainAuth> {
                 CwSizedBox(
                   h: 0.06,
                 ),
-                cwInputBox(
-                  height,
-                  width,
-                  onChange: (String value) =>
-                      _onChange(value, userInfo: userEmail),
-                  keyboardType: TextInputType.emailAddress,
-                  header: "Email",
-                  errorMessage: 'Invalid Email',
-                ),
-                CwSizedBox(
-                  h: 0.03,
-                ),
-                cwInputBox(height, width,
-                    onChange: (String value) =>
-                        _onChange(value, userInfo: userPassword),
-                    keyboardType: TextInputType.visiblePassword,
-                    header: "Password",
-                    isObscureText: true,
-                    errorMessage: 'Invalid Password'),
-                CwSizedBox(
-                  h: 0.03,
-                ),
-                Text(
-                  "Forgat Password?",
-                  style: TextStyle(
-                      color: Colors.grey, decoration: TextDecoration.underline),
-                ),
-                CwSizedBox(
-                  h: 0.3,
-                ),
-                Container(
-                  height: height * 0.075,
-                  width: width * 0.5,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                SizedBox(
+                  width: width,
+                  height: height * 0.65,
+                  child: PageView(
+                    controller: _pageController,
+                    children: [
+                      signInSection(height, width),
+                      signUpSection(height, width),
+                    ],
                   ),
                 )
               ],
@@ -85,6 +59,132 @@ class _MainAuthState extends State<MainAuth> {
           ),
         )),
       ),
+    );
+  }
+
+  Column signUpSection(double height, double width) {
+    return Column(
+                      children: [
+                        cwInputBox(
+                          height,
+                          width,
+                          onChange: (String value) =>
+                              _onChange(value, userInfo: signUpuserEmail),
+                          keyboardType: TextInputType.emailAddress,
+                          header: "Email",
+                          errorMessage: 'Invalid Email',
+                        ),
+                        CwSizedBox(
+                          h: 0.03,
+                        ),
+                        cwInputBox(height, width,
+                            onChange: (String value) =>
+                                _onChange(value, userInfo: signUpuserPassword),
+                            keyboardType: TextInputType.visiblePassword,
+                            header: "Password",
+                            isObscureText: true,
+                            errorMessage: 'Invalid Password'),
+                        CwSizedBox(
+                          h: 0.03,
+                        ),
+                        cwInputBox(height, width,
+                            onChange: (String value) =>
+                                _onChange(value, userInfo: signUpuserPassword),
+                            keyboardType: TextInputType.visiblePassword,
+                            header: "Re-write Password",
+                            isObscureText: true,
+                            errorMessage: ''),
+                        CwSizedBox(
+                          h: 0.06,
+                        ),
+                        RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                                children: [
+                                  TextSpan(
+                                      text:
+                                          "Lorem ipsum dolor sit amet lit, sed d "),
+                                  TextSpan(
+                                      text: "Term of Use",
+                                      style: TextStyle(
+                                          decoration:
+                                              TextDecoration.underline,
+                                          color: Colors.blue)),
+                                  TextSpan(
+                                      text:
+                                          " labore magna aliqua. aliqua. o eiusmod tempor incididunt ut "),
+                                  TextSpan(
+                                      text: "Privacy Notice",
+                                      style: TextStyle(
+                                          decoration:
+                                              TextDecoration.underline,
+                                          color: Colors.blue)),
+                                  TextSpan(text: " labore et dolore "),
+                                ])),
+                        Spacer(),
+                        Container(
+                          height: height * 0.075,
+                          width: width * 0.5,
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              "Continue",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
+                    );
+  }
+
+  Column signInSection(double height, double width) {
+    return Column(
+      children: [
+        cwInputBox(
+          height,
+          width,
+          onChange: (String value) => _onChange(value, userInfo: userEmail),
+          keyboardType: TextInputType.emailAddress,
+          header: "Email",
+          errorMessage: 'Invalid Email',
+        ),
+        CwSizedBox(
+          h: 0.03,
+        ),
+        cwInputBox(height, width,
+            onChange: (String value) =>
+                _onChange(value, userInfo: userPassword),
+            keyboardType: TextInputType.visiblePassword,
+            header: "Password",
+            isObscureText: true,
+            errorMessage: 'Invalid Password'),
+        CwSizedBox(
+          h: 0.03,
+        ),
+        Text(
+          "Forgat Password?",
+          style: TextStyle(
+              color: Colors.grey, decoration: TextDecoration.underline),
+        ),
+        Spacer(),
+        Container(
+          height: height * 0.075,
+          width: width * 0.5,
+          decoration: BoxDecoration(
+              color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+          child: Center(
+            child: Text(
+              "Continue",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        )
+      ],
     );
   }
 
@@ -205,6 +305,11 @@ class _MainAuthState extends State<MainAuth> {
   void _onPressTabButton() {
     setState(() {
       _isSelectedSignIn = !_isSelectedSignIn;
+      _isSelectedSignIn
+          ? _pageController.animateToPage(0,
+              curve: Curves.ease, duration: Duration(milliseconds: 500))
+          : _pageController.animateToPage(1,
+              curve: Curves.ease, duration: Duration(milliseconds: 500));
     });
   }
 
