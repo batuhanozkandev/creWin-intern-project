@@ -1,0 +1,89 @@
+import 'package:crewin_intern_project/widget/cwContinueButton.dart';
+import 'package:crewin_intern_project/widget/cwSizedBox.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+String userName = "";
+
+class YourNamePage extends StatefulWidget {
+  const YourNamePage({Key? key}) : super(key: key);
+
+  @override
+  _YourNamePageState createState() => _YourNamePageState();
+}
+
+class _YourNamePageState extends State<YourNamePage> {
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          width: width * 0.5,
+          child: Column(
+            children: [
+              CwSizedBox(h: 0.08),
+              backArrow(context),
+              CwSizedBox(h: 0.2),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Your Name?",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
+                ),
+              ),
+              CwSizedBox(h: 0.1),
+              nameInputBox(height, width),
+              CwSizedBox(h: 0.2),
+              CwContinueButton(navigateTo: YourNamePage()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Align backArrow(BuildContext context) {
+    return Align(
+        alignment: Alignment.centerLeft,
+        child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: FaIcon(FontAwesomeIcons.arrowLeft)));
+  }
+
+  Container nameInputBox(double height, double width) {
+    return Container(
+      height: height * 0.07,
+      width: width * 0.5,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: Colors.grey.withOpacity(0.5))),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Form(
+            autovalidateMode: AutovalidateMode.always,
+            child: TextFormField(
+              onChanged: (String value) => _onChange(value, userInfo: userName),
+              keyboardType: TextInputType.visiblePassword,
+              decoration: InputDecoration(
+                  isCollapsed: true,
+                  border: InputBorder.none,
+                  hintText: "Your Name"),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _onChange(String value, {required String userInfo}) {
+    setState(() {
+      userInfo = value;
+      print(userInfo);
+    });
+  }
+}
