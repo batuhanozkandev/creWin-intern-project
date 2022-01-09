@@ -1,10 +1,16 @@
 import 'package:crewin_intern_project/core/constants/color/authMainPageColors.dart';
 import 'package:flutter/material.dart';
 
-bool _isSelectedSignIn = true;
-
 class TopBar extends StatefulWidget {
-  const TopBar({Key? key}) : super(key: key);
+  final bool isSelectedSignIn;
+  final Function onPressSignIn, onPressSignUp;
+
+  const TopBar(
+      {Key? key,
+      required this.onPressSignIn,
+      required this.onPressSignUp,
+      required this.isSelectedSignIn})
+      : super(key: key);
 
   @override
   _TopBarState createState() => _TopBarState();
@@ -26,48 +32,40 @@ class _TopBarState extends State<TopBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isSelectedSignIn = !_isSelectedSignIn;
-                });
-              },
+              onTap: () => widget.onPressSignIn,
               child: Container(
                 height: height * 0.06,
                 width: width * 0.25,
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: _isSelectedSignIn
+                        color: widget.isSelectedSignIn
                             ? Colors.blueGrey
                             : kTopBarBackgroundColor),
                     borderRadius: BorderRadius.circular(10),
-                    color: _isSelectedSignIn
+                    color: widget.isSelectedSignIn
                         ? Colors.white
                         : kTopBarBackgroundColor),
                 child: Center(
                     child: Text(
                   "SignIn",
                   style: TextStyle(
-                      color: _isSelectedSignIn ? Colors.black : kInActiveColor,
+                      color: widget.isSelectedSignIn ? Colors.black : kInActiveColor,
                       fontWeight: FontWeight.bold),
                 )),
               ),
             ),
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isSelectedSignIn = !_isSelectedSignIn;
-                });
-              },
+              onTap: () => widget.onPressSignUp,
               child: Container(
                 height: height * 0.06,
                 width: width * 0.25,
                 decoration: BoxDecoration(
                     border: Border.all(
-                        color: _isSelectedSignIn
+                        color: widget.isSelectedSignIn
                             ? kTopBarBackgroundColor
                             : Colors.blueGrey),
                     borderRadius: BorderRadius.circular(10),
-                    color: _isSelectedSignIn
+                    color: widget.isSelectedSignIn
                         ? kTopBarBackgroundColor
                         : Colors.white),
                 child: Center(
@@ -75,7 +73,7 @@ class _TopBarState extends State<TopBar> {
                   "SignUp",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: _isSelectedSignIn ? kInActiveColor : Colors.black,
+                    color: widget.isSelectedSignIn ? kInActiveColor : Colors.black,
                   ),
                 )),
               ),
