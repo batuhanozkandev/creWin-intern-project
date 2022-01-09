@@ -23,4 +23,9 @@ class CwButtonFunc {
     await Navigator.push(
         context, MaterialPageRoute(builder: (context) => MainAuth()));
   }
+
+  static onContinue(BuildContext context,{required Widget page}) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => page));
+  }
 }
