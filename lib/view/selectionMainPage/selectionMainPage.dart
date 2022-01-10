@@ -3,6 +3,7 @@ import 'package:crewin_intern_project/model/widget/logo.dart';
 import 'package:crewin_intern_project/view/age/agePage.dart';
 import 'package:crewin_intern_project/view/gender/genderPage.dart';
 import 'package:crewin_intern_project/view/length/lengthPage.dart';
+import 'package:crewin_intern_project/view/weight/weightPage.dart';
 import 'package:crewin_intern_project/widget/cwBackArrow.dart';
 import 'package:crewin_intern_project/widget/cwBackSlideArrow.dart';
 import 'package:crewin_intern_project/widget/cwNextButton.dart';
@@ -76,7 +77,7 @@ class _SelectionMainPageState extends State<SelectionMainPage> {
                     GenderPage(),
                     AgePage(),
                     LengthPage(),
-                    GenderPage()
+                    WeightPage(),
                   ],
                 ),
               ),
