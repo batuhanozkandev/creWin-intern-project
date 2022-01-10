@@ -1,4 +1,4 @@
-import 'package:crewin_intern_project/view/gender/genderpage.dart';
+import 'package:crewin_intern_project/view/gender/genderPage.dart';
 import 'package:crewin_intern_project/view/selectionMainPage/selectionMainPage.dart';
 import 'package:crewin_intern_project/widget/cwBackArrow.dart';
 import 'package:crewin_intern_project/widget/cwContinueButton.dart';
