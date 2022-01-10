@@ -44,7 +44,7 @@ class _AgePageState extends State<AgePage> {
           child: Column(
             children: [
               cwQuestion(
-                text: "What is your age?",
+                text: "How old are you?",
               ),
               CwSizedBox(h: 0.05),
               wheelList(width, height),

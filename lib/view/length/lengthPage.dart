@@ -44,7 +44,7 @@ class _LengthPageState extends State<LengthPage> {
           child: Column(
             children: [
               cwQuestion(
-                text: "What is your length?",
+                text: "How much is your length?",
               ),
               CwSizedBox(h: 0.05),
               wheelList(width, height),
