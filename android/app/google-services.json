@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "653763919825",
+    "project_id": "crewin-internship",
+    "storage_bucket": "crewin-internship.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653763919825:android:244ce783798e0f60c3eaf0",
+        "android_client_info": {
+          "package_name": "com.example.crewin_intern_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653763919825-6hm8et8g0oo0ejs812asb1m59uj9h346.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHYGwfAk9c0eh8_gG4y3dKtDF690gumgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653763919825-6hm8et8g0oo0ejs812asb1m59uj9h346.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
