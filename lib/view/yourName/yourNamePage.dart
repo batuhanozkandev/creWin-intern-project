@@ -1,3 +1,6 @@
+import 'package:crewin_intern_project/view/gender/genderpage.dart';
+import 'package:crewin_intern_project/view/selectionMainPage/selectionMainPage.dart';
+import 'package:crewin_intern_project/widget/cwBackArrow.dart';
 import 'package:crewin_intern_project/widget/cwContinueButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +19,15 @@ class _YourNamePageState extends State<YourNamePage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: width * 0.5,
+          width: width * 0.8,
           child: Column(
             children: [
               CwSizedBox(h: 0.08),
-              backArrow(context),
+              CwBackArrow(),
               CwSizedBox(h: 0.2),
               Align(
                 alignment: Alignment.centerLeft,
@@ -36,7 +39,7 @@ class _YourNamePageState extends State<YourNamePage> {
               CwSizedBox(h: 0.1),
               nameInputBox(height, width),
               CwSizedBox(h: 0.2),
-              CwContinueButton(navigateTo: YourNamePage()),
+              CwContinueButton(navigateTo: SelectionMainPage()),
             ],
           ),
         ),
@@ -44,20 +47,10 @@ class _YourNamePageState extends State<YourNamePage> {
     );
   }
 
-  Align backArrow(BuildContext context) {
-    return Align(
-        alignment: Alignment.centerLeft,
-        child: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: FaIcon(FontAwesomeIcons.arrowLeft)));
-  }
-
   Container nameInputBox(double height, double width) {
     return Container(
       height: height * 0.07,
-      width: width * 0.5,
+      width: width * 0.8,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.grey.withOpacity(0.5))),

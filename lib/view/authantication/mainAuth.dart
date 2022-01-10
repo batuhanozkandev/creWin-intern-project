@@ -22,13 +22,13 @@ class _MainAuthState extends State<MainAuth> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
             child: Center(
           child: SizedBox(
-            width: width * 0.5,
+            width: width * 0.8,
             child: Column(
               children: [
                 CwSizedBox(
@@ -58,7 +58,7 @@ class _MainAuthState extends State<MainAuth> {
     return Center(
       child: Container(
         height: height * 0.07,
-        width: width * 0.5,
+        width: width * 0.8,
         decoration: BoxDecoration(
             color: kTopBarBackgroundColor,
             borderRadius: BorderRadius.circular(15)),
@@ -78,7 +78,7 @@ class _MainAuthState extends State<MainAuth> {
       onTap: _onPressTabButton,
       child: Container(
         height: height * 0.06,
-        width: width * 0.25,
+        width: width * 0.4,
         decoration: BoxDecoration(
             border: Border.all(
                 color: _isSelectedSignIn
@@ -102,7 +102,7 @@ class _MainAuthState extends State<MainAuth> {
       onTap: _onPressTabButton,
       child: Container(
         height: height * 0.06,
-        width: width * 0.25,
+        width: width * 0.4,
         decoration: BoxDecoration(
             border: Border.all(
                 color: _isSelectedSignIn

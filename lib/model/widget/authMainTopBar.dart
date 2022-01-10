@@ -20,7 +20,7 @@ class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Center(
       child: Container(
         height: height * 0.07,

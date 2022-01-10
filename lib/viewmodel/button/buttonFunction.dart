@@ -24,8 +24,16 @@ class CwButtonFunc {
         context, MaterialPageRoute(builder: (context) => MainAuth()));
   }
 
-  static onContinue(BuildContext context,{required Widget page}) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => page));
+  static onContinue(BuildContext context, {required Widget page}) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+  }
+
+  static onNext(
+    BuildContext context, {
+    required PageController pageController,
+    required int toIndexPage,
+  }) {
+    pageController.animateToPage(toIndexPage,
+        curve: Curves.ease, duration: Duration(milliseconds: 500));
   }
 }
