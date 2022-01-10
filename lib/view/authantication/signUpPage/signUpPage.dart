@@ -18,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         cwInputBox(
@@ -96,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         Container(
           height: height * 0.07,
-          width: width * 0.5,
+          width: width * 0.8,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(color: Colors.grey.withOpacity(0.5))),

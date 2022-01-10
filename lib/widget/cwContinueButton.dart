@@ -8,11 +8,11 @@ class CwContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return  GestureDetector(onTap: () => CwButtonFunc.onContinue(context, page: navigateTo) ,
           child: Container(
             height: height * 0.075,
-            width: width * 0.5,
+            width: width * 0.8,
             decoration: BoxDecoration(
                 color: Colors.blue, borderRadius: BorderRadius.circular(10)),
             child: Center(
