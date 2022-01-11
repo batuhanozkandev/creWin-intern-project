@@ -3,6 +3,7 @@ import 'package:crewin_intern_project/view/selectionMainPage/selectionMainPage.d
 import 'package:crewin_intern_project/widget/cwBackArrow.dart';
 import 'package:crewin_intern_project/widget/cwContinueButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
+import 'package:crewin_intern_project/widget/yourNameButton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -39,7 +40,10 @@ class _YourNamePageState extends State<YourNamePage> {
               CwSizedBox(h: 0.1),
               nameInputBox(height, width),
               CwSizedBox(h: 0.2),
-              CwContinueButton(navigateTo: SelectionMainPage()),
+              CwYourNameButton(
+                navigateTo: SelectionMainPage(),
+                userName: userName,
+              ),
             ],
           ),
         ),
@@ -60,7 +64,7 @@ class _YourNamePageState extends State<YourNamePage> {
           child: Form(
             autovalidateMode: AutovalidateMode.always,
             child: TextFormField(
-              onChanged: (String value) => _onChange(value, userInfo: userName),
+              onChanged: (String value) => _onChangeName(value),
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                   isCollapsed: true,
@@ -73,10 +77,10 @@ class _YourNamePageState extends State<YourNamePage> {
     );
   }
 
-  void _onChange(String value, {required String userInfo}) {
+  void _onChangeName(String value) {
     setState(() {
-      userInfo = value;
-      print(userInfo);
+      userName = value;
+      print(userName);
     });
   }
 }

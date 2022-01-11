@@ -1,4 +1,5 @@
 import 'package:crewin_intern_project/service/firebase/cwFirebase.dart';
+import 'package:crewin_intern_project/service/sharedPreferences/sharedPreferences.dart';
 import 'package:flutter/material.dart';
 
 class CwAddandGiveInfo extends StatelessWidget {
@@ -6,9 +7,15 @@ class CwAddandGiveInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return FutureBuilder(
         future: CwFirebase.add(
-            collectionName: "user", age: "50", length: "170", weight: "40"),
+            collectionName: "user",
+            userEmail: CwSharedPreferences.getString(key: "userEmail"),
+            userName: CwSharedPreferences.getString(key: "userName"),
+            age: CwSharedPreferences.getInt(key: "age"),
+            length: CwSharedPreferences.getInt(key: "length"),
+            weight: CwSharedPreferences.getInt(key: "weight"),),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:

@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
         cwInputBox(
           height,
           width,
-          onChange: (String value) => _onChange(value, userInfo: userEmail),
+          onChange: (String value) => _onChangeEmail(value),
           keyboardType: TextInputType.emailAddress,
           header: "Email",
           errorMessage: 'Invalid Email',
@@ -35,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         cwInputBox(height, width,
             onChange: (String value) =>
-                _onChange(value, userInfo: userPassword),
+                _onChangePassword(value),
             keyboardType: TextInputType.visiblePassword,
             header: "Password",
             isObscureText: true,
@@ -54,10 +54,16 @@ class _SignInPageState extends State<SignInPage> {
     ));
   }
 
-  void _onChange(String value, {required String userInfo}) {
+  void _onChangeEmail(String value) {
     setState(() {
-      userInfo = value;
-      print(userInfo);
+      userEmail = value;
+      print(userEmail);
+    });
+  }
+  void _onChangePassword(String value) {
+    setState(() {
+      userPassword = value;
+      print(userPassword);
     });
   }
 

@@ -11,9 +11,8 @@ import 'package:clickable_list_wheel_view/measure_size.dart';
 
 FixedExtentScrollController _scrollController = FixedExtentScrollController();
 
-bool isSelectedWoman = false;
-bool isSelectedMen = false;
 List ageList = [];
+int selectedAge = _scrollController.initialItem;
 
 class AgePage extends StatefulWidget {
   const AgePage({Key? key}) : super(key: key);
@@ -26,7 +25,7 @@ class _AgePageState extends State<AgePage> {
   @override
   void initState() {
     for (int i = 7; i < 60; i++) {
-      ageList.add(i.toString());
+      ageList.add(i);
     }
     super.initState();
   }
@@ -57,34 +56,36 @@ class _AgePageState extends State<AgePage> {
 
   SizedBox wheelList(double width, double height) {
     return SizedBox(
-              width: width,
-              height: height * 0.3,
-              child: ClickableListWheelScrollView(
-                scrollController: _scrollController,
-                itemHeight: 50,
-                itemCount: ageList.length,
-                onItemTapCallback: (index) {
-                  print("onItemTapCallback index: $index");
-                },
-                child: ListWheelScrollView.useDelegate(
-                  controller: _scrollController,
-                  itemExtent: 50,
-                  physics: FixedExtentScrollPhysics(),
-                  overAndUnderCenterOpacity: 0.5,
-                  perspective: 0.002,
-                  onSelectedItemChanged: (index) {
-                    print("onSelectedItemChanged index: $index");
-                  },
-                  childDelegate: ListWheelChildBuilderDelegate(
-                    builder: (context, index) => Text(
-                      ageList[index],
-                      style: TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    childCount: ageList.length,
-                  ),
-                ),
-              ),
-            );
+      width: width,
+      height: height * 0.3,
+      child: ClickableListWheelScrollView(
+        scrollController: _scrollController,
+        itemHeight: 50,
+        itemCount: ageList.length,
+        onItemTapCallback: (index) {
+          print("onItemTapCallback index: $index");
+        },
+        child: ListWheelScrollView.useDelegate(
+          controller: _scrollController,
+          itemExtent: 50,
+          physics: FixedExtentScrollPhysics(),
+          overAndUnderCenterOpacity: 0.5,
+          perspective: 0.002,
+          onSelectedItemChanged: (index) {
+            print("onSelectedItemChanged index: $index");
+            setState(() {
+              selectedAge=ageList[index];
+            });
+          },
+          childDelegate: ListWheelChildBuilderDelegate(
+            builder: (context, index) => Text(
+              ageList[index].toString(),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+            childCount: ageList.length,
+          ),
+        ),
+      ),
+    );
   }
 }
