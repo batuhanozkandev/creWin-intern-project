@@ -1,16 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crewin_intern_project/view/authantication/signInPage/signInPage.dart';
 
 class CwFirebase {
   static Future<void> add(
       {String? collectionName,
-      String? age,
-      String? length,
-      String? weight}) async {
+      String? userName,
+      String? userEmail,
+      int? age,
+      int? length,
+      int? weight}) async {
     CollectionReference reference =
         FirebaseFirestore.instance.collection(collectionName ?? '');
 
     return reference
-        .add({'age': age ?? "", 'length': length ?? "", 'weight': weight ?? ""})
+        .add({
+          'User Name': userName ?? "",
+          'User Email': userEmail ?? "",
+          'Age': age ?? "",
+          'Length': length ?? "",
+          'Weight': weight ?? ""
+        })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));
   }

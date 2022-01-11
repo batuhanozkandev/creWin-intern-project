@@ -1,6 +1,7 @@
 import 'package:crewin_intern_project/core/constants/color/landingPageColors.dart';
 import 'package:crewin_intern_project/model/widget/logo.dart';
 import 'package:crewin_intern_project/service/firebase/cwFirebase.dart';
+import 'package:crewin_intern_project/service/sharedPreferences/sharedPreferences.dart';
 import 'package:crewin_intern_project/view/age/agePage.dart';
 import 'package:crewin_intern_project/view/gender/genderPage.dart';
 import 'package:crewin_intern_project/view/length/lengthPage.dart';
@@ -12,6 +13,7 @@ import 'package:crewin_intern_project/widget/cwFinishButton.dart';
 import 'package:crewin_intern_project/widget/cwNextButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 PageController pageController = PageController();
@@ -88,6 +90,24 @@ class _SelectionMainPageState extends State<SelectionMainPage> {
               currentPageIndex != 3
                   ? GestureDetector(
                       onTap: () {
+                        switch (currentPageIndex) {
+                          case 0:
+                            CwSharedPreferences.setString(
+                                key: "gender",
+                                value: isSelectedMen ? "Man" : "Woman");
+                            break;
+                          case 1:
+                            CwSharedPreferences.setInt(
+                                key: "age", value: selectedAge);
+                            break;
+                          case 2:
+                            CwSharedPreferences.setInt(
+                                key: "length", value: selectedLength);
+                            break;
+
+                          default:
+                        }
+
                         setState(() {
                           if (currentPageIndex < 3) {
                             currentPageIndex++;
@@ -99,11 +119,14 @@ class _SelectionMainPageState extends State<SelectionMainPage> {
                       child: CwNextButton())
                   : GestureDetector(
                       onTap: () {
+                        CwSharedPreferences.setInt(
+                            key: "weight", value: selectedWeight);
                         setState(() {
                           isFinished = true;
                         });
                       },
-                      child: isFinished ? CwAddandGiveInfo() : CwFinishButton()),
+                      child:
+                          isFinished ? CwAddandGiveInfo() : CwFinishButton()),
               CwSizedBox(h: 0.04),
               SmoothPageIndicator(
                   controller: pageController, // PageController

@@ -3,11 +3,11 @@ import 'package:crewin_intern_project/view/authantication/signInPage/signInPage.
 import 'package:crewin_intern_project/viewmodel/button/buttonFunction.dart';
 import 'package:flutter/material.dart';
 
-class CwContinueButton extends StatelessWidget {
-  
+class CwYourNameButton extends StatelessWidget {
+  final String userName;
   final Widget navigateTo;
-  const CwContinueButton(
-      {Key? key, required this.navigateTo})
+  const CwYourNameButton(
+      {Key? key, required this.navigateTo, required this.userName})
       : super(key: key);
 
   @override
@@ -16,8 +16,7 @@ class CwContinueButton extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        CwSharedPreferences.setString(key: "userEmail", value: userEmail);
-        print("USER EMAİL : "+userEmail + " OLARAK KAYDEDİLDİ");
+        CwSharedPreferences.setString(key: "userName", value: userName);
         CwButtonFunc.onContinue(context, page: navigateTo);
       },
       child: Container(

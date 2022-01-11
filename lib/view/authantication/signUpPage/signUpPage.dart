@@ -1,3 +1,4 @@
+import 'package:crewin_intern_project/view/authantication/signInPage/signInPage.dart';
 import 'package:crewin_intern_project/view/yourName/yourNamePage.dart';
 import 'package:crewin_intern_project/widget/cwContinueButton.dart';
 import 'package:crewin_intern_project/widget/cwSizedBox.dart';
@@ -24,8 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
         cwInputBox(
           height,
           width,
-          onChange: (String value) =>
-              _onChange(value, userInfo: signUpuserEmail),
+          onChange: (String value) => _onChangeEmail(value),
           keyboardType: TextInputType.emailAddress,
           header: "Email",
           errorMessage: 'Invalid Email',
@@ -34,8 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
           h: 0.03,
         ),
         cwInputBox(height, width,
-            onChange: (String value) =>
-                _onChange(value, userInfo: signUpuserPassword),
+            onChange: (String value) => _onChangePassword(value),
             keyboardType: TextInputType.visiblePassword,
             header: "Password",
             isObscureText: true,
@@ -44,8 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
           h: 0.03,
         ),
         cwInputBox(height, width,
-            onChange: (String value) =>
-                _onChange(value, userInfo: signUpuserPassword),
+            onChange: (String value) => _onChangePassword(value),
             keyboardType: TextInputType.visiblePassword,
             header: "Re-write Password",
             isObscureText: true,
@@ -77,7 +75,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   TextSpan(text: " labore et dolore "),
                 ])),
         Spacer(),
-       CwContinueButton(navigateTo: YourNamePage()),
+        CwContinueButton(
+          navigateTo: YourNamePage(),
+        ),
       ],
     );
   }
@@ -128,12 +128,17 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void _onChange(String value, {required String userInfo}) {
+  void _onChangeEmail(String value) {
     setState(() {
-      userInfo = value;
-      print(userInfo);
+      signUpuserEmail = value;
+      print(signUpuserEmail);
     });
   }
 
-  
+  void _onChangePassword(String value) {
+    setState(() {
+      signUpuserPassword = value;
+      print(signUpuserPassword);
+    });
+  }
 }

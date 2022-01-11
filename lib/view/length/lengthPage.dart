@@ -11,8 +11,7 @@ import 'package:clickable_list_wheel_view/measure_size.dart';
 
 FixedExtentScrollController _scrollController = FixedExtentScrollController();
 
-bool isSelectedWoman = false;
-bool isSelectedMen = false;
+int selectedLength=_scrollController.initialItem;
 List lengthList = [];
 
 class LengthPage extends StatefulWidget {
@@ -26,7 +25,7 @@ class _LengthPageState extends State<LengthPage> {
   @override
   void initState() {
     for (int i = 140; i < 220; i++) {
-      lengthList.add(i.toString());
+      lengthList.add(i);
     }
     super.initState();
   }
@@ -74,10 +73,13 @@ class _LengthPageState extends State<LengthPage> {
           perspective: 0.002,
           onSelectedItemChanged: (index) {
             print("onSelectedItemChanged index: $index");
+            setState(() {
+              selectedLength=lengthList[index];
+            });
           },
           childDelegate: ListWheelChildBuilderDelegate(
             builder: (context, index) => Text(
-              lengthList[index],
+              lengthList[index].toString(),
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             childCount: lengthList.length,

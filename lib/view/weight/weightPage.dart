@@ -11,9 +11,8 @@ import 'package:clickable_list_wheel_view/measure_size.dart';
 
 FixedExtentScrollController _scrollController = FixedExtentScrollController();
 
-bool isSelectedWoman = false;
-bool isSelectedMen = false;
-List lengthList = [];
+int selectedWeight = _scrollController.initialItem;
+List weightList = [];
 
 class WeightPage extends StatefulWidget {
   const WeightPage({Key? key}) : super(key: key);
@@ -26,14 +25,14 @@ class _WeightPageState extends State<WeightPage> {
   @override
   void initState() {
     for (int i = 40; i < 220; i++) {
-      lengthList.add(i.toString());
+      weightList.add(i);
     }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _scrollController.initialItem = (lengthList.length / 2).ceil();
+    _scrollController.initialItem = (weightList.length / 2).ceil();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -62,7 +61,7 @@ class _WeightPageState extends State<WeightPage> {
       child: ClickableListWheelScrollView(
         scrollController: _scrollController,
         itemHeight: 50,
-        itemCount: lengthList.length,
+        itemCount: weightList.length,
         onItemTapCallback: (index) {
           print("onItemTapCallback index: $index");
         },
@@ -74,13 +73,16 @@ class _WeightPageState extends State<WeightPage> {
           perspective: 0.002,
           onSelectedItemChanged: (index) {
             print("onSelectedItemChanged index: $index");
+            setState(() {
+              selectedWeight = weightList[index];
+            });
           },
           childDelegate: ListWheelChildBuilderDelegate(
             builder: (context, index) => Text(
-              lengthList[index],
+              weightList[index].toString(),
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            childCount: lengthList.length,
+            childCount: weightList.length,
           ),
         ),
       ),
