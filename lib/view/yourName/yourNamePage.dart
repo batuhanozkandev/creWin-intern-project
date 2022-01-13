@@ -22,29 +22,31 @@ class _YourNamePageState extends State<YourNamePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: width * 0.8,
-          child: Column(
-            children: [
-              CwSizedBox(h: 0.08),
-              CwBackArrow(),
-              CwSizedBox(h: 0.2),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Your Name?",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
+      body: SingleChildScrollView(
+        child: Center(
+          child: SizedBox(
+            width: width * 0.8,
+            child: Column(
+              children: [
+                CwSizedBox(h: 0.08),
+                CwBackArrow(),
+                CwSizedBox(h: 0.2),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Your Name?",
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),
+                  ),
                 ),
-              ),
-              CwSizedBox(h: 0.1),
-              nameInputBox(height, width),
-              CwSizedBox(h: 0.2),
-              CwYourNameButton(
-                navigateTo: SelectionMainPage(),
-                userName: userName,
-              ),
-            ],
+                CwSizedBox(h: 0.1),
+                nameInputBox(height, width),
+                CwSizedBox(h: 0.2),
+                CwYourNameButton(
+                  navigateTo: SelectionMainPage(),
+                  userName: userName,
+                ),
+              ],
+            ),
           ),
         ),
       ),
